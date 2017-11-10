@@ -18,8 +18,13 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: ror-tumblr_test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: ror-tumblr_production
+  username: ror-tumblr
+  password: <%= ENV['CABINET_DATABASE_PASSWORD'] %>
