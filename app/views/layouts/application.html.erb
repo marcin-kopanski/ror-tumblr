@@ -9,6 +9,46 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <%= link_to "Tumblr", root_path, class: "navbar-brand" %>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <%= link_to "Posts", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">User Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <nav class="navbar navbar-light bg-light">
+        <p class="navbar-brand">Post feed</p>
+        <ul class="nav">
+          <li class="nav-item">
+            <%= link_to "Make Post", new_post_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Log Out</a>
+          </li>
+        </ul>
+      </nav>
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert" %>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

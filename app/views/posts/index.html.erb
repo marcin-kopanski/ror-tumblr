@@ -1,8 +1,17 @@
 <h1>Index Page</h1>
 
+<hr>
+
 <% @posts.each do |post| %>
-  <div class="post_wrapper">
-    <h2 class="title"><%= post.title %></h2>
-    <p class="date"><%= time_ago_in_words(post.created_at) %></p>
+  <div class="row">
+    <div class="div col-12">
+      <h2 class="title"><%= post.title %></h2>
+    </div>
   </div>
+  <div class="row">
+    <div class="div col-12">
+      <p class="date"><%= time_ago_in_words(post.created_at) %></p>
+    </div>
+  </div>
+  <hr>
 <% end %>
