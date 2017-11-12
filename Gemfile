@@ -63,3 +63,5 @@ gem 'jquery-rails'
 # formatowanie tekstu
 gem 'redcarpet', '~> 3.4'
 gem 'coderay', '~> 1.1', '>= 1.1.2'
+
+gem 'devise', '~> 4.3'
