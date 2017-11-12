@@ -4,6 +4,11 @@
       <%= @post.title %>
     </h1>
 
+    <p class="admin d-flex flex-row">
+      <%= link_to "Edit", edit_post_path(@post) %>
+      <%= link_to "Destroy", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+
     <p class="date">
       Sibmited <%= time_ago_in_words(@post.created_at) %> ago
     </p>
