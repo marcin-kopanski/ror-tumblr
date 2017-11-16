@@ -24,7 +24,10 @@
               <%= link_to "About", about_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">User Login</a>
+              <%= link_to "Login", new_user_session_path, class: "nav-link" unless user_signed_in? %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" if user_signed_in? %>
             </li>
           </ul>
         </div>
@@ -32,28 +35,24 @@
     </nav>
 
     <div class="container">
-      <nav class="navbar navbar-light bg-light">
-        <% if current_page? root_path %>
-          <p class="navbar-brand">Post feed</p>
-        <% elsif current_page? about_path %>
-          <p class="navbar-brand">About</p>
-        <% else %>
-          <%= link_to "Back to Post feed", root_path %>
-        <% end %>
+      <% if user_signed_in? %>
+        <nav class="navbar navbar-light bg-light">
+          <% if current_page? root_path %>
+            <p class="navbar-brand">Post feed</p>
+          <% elsif current_page? about_path %>
+            <p class="navbar-brand">About</p>
+          <% else %>
+            <%= link_to "Back to Post feed", root_path %>
+          <% end %>
 
 
-        <ul class="nav">
-          <li class="nav-item">
-            <%= link_to "Make Post", new_post_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Log Out</a>
-          </li>
-        </ul>
-      </nav>
-
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+          <ul class="nav">
+            <li class="nav-item">
+              <%= link_to "Make Post", new_post_path, class: "nav-link" %>
+            </li>
+          </ul>
+        </nav>
+      <% end %>
 
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: "alert" %>
